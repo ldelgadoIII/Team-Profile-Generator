@@ -1,4 +1,7 @@
 // DEPENCIES ==============================
+const fs = require("fs");
+const inquirer = require("inquirer");
+
 // STARTING DATA ==========================
 // Employee class
 class Employee {

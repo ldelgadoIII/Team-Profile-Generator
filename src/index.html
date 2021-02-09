@@ -11,7 +11,7 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../dist/style.css" />
 
     <title>Team Profile Generator</title>
   </head>
@@ -23,42 +23,23 @@
     <!-- container for cards -->
     <div class="container">
       <div class="row">
+        <!-- insert cards here -->
         <div class="col-md-4">
           <div class="card text-white bg-primary mb-3" style="max-width: 18rem">
-            <div class="card-header">Header</div>
-            <div class="card-body">
+            <div class="card-header">
+              <h1>{name}</h1>
+              <h2><span>icon</span>{role}</h2>
+            </div>
+            <div class="card-body" id="card">
               <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">ID: {id}</li>
+                <li class="list-group-item">Email: {email}</li>
+                <li class="list-group-item">Office number: {office}</li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card text-white bg-primary mb-3" style="max-width: 18rem">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card text-white bg-primary mb-3" style="max-width: 18rem">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <!-- card ends here  -->
       </div>
     </div>
     <script

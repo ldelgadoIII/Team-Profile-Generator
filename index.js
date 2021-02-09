@@ -95,13 +95,12 @@ function init() {
   inquirer.prompt(initialQs).then((response) => {
     const newManager = new Manager(
       response.name,
-      "Manager",
       response.id,
       response.email,
       response.office
     );
 
-    employeeArray.push(newManager);
+    employeeArray.push(newManager.getTemplate());
     console.log(employeeArray);
 
     // Prompt to add employee

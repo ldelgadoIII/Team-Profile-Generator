@@ -105,7 +105,7 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt(initialQs).then((response) => {
     generateHTML(response);
-    // writeToFile("team.html", generateHTML(response));
+    // writeToFile("dist/index.html", generateHTML(response));
   });
 }
 // USER INTERACTIONS ======================

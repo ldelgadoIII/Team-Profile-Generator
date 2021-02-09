@@ -7,7 +7,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 // STARTING DATA ==========================
-let listQueestion;
+// let listQuestion;
 const employeeArray = [];
 
 // Questions to ask user
@@ -32,12 +32,6 @@ const initialQs = [
     message: "Please enter an office number.",
     name: "office",
   },
-  {
-    type: "list",
-    message: "Would you like to add another employee?",
-    name: "option",
-    choices: ["Engineer", "Intern", "Finish Team"],
-  },
 ];
 
 const engineerQs = [
@@ -60,12 +54,6 @@ const engineerQs = [
     type: "input",
     message: "Please enter a github username.",
     name: "github",
-  },
-  {
-    type: "list",
-    message: "Would you like to add another employee?",
-    name: "option",
-    choices: ["Engineer", "Intern", "Finish Team"],
   },
 ];
 
@@ -90,6 +78,9 @@ const internQs = [
     message: "Please enter a school.",
     name: "school",
   },
+];
+
+const employeeChoice = [
   {
     type: "list",
     message: "Would you like to add another employee?",
@@ -111,67 +102,63 @@ function init() {
     );
 
     employeeArray.push(newManager);
+    console.log(employeeArray);
 
+    // Prompt to add employee
+    addEmployee();
+  });
+}
+
+function addEmployee() {
+  inquirer.prompt(employeeChoice).then(async (response) => {
     switch (response.option) {
+      // Make an Engineer
       case "Engineer":
-        listQueestion = engineerQs;
-        // console.log("List Question: ", listQueestion);
+        await inquirer.prompt(engineerQs).then(async (response) => {
+          const newEngineer = new Engineer(
+            response.name,
+            "Engineer",
+            response.id,
+            response.email,
+            response.github
+          );
+
+          employeeArray.push(newEngineer);
+
+          console.log(employeeArray);
+        });
+        // Prompt question again
+        addEmployee();
         break;
+
+      // Make an Intern
       case "Intern":
-        listQueestion = internQs;
-        // console.log("List Question: ", listQueestion);
+        await inquirer.prompt(internQs).then(async (response) => {
+          const newIntern = new Intern(
+            response.name,
+            "Intern",
+            response.id,
+            response.email,
+            response.school
+          );
+
+          employeeArray.push(newIntern);
+
+          console.log(employeeArray);
+        });
+
+        // Prompt question again
+        addEmployee();
         break;
       default:
-        console.log("The contents of the employee Array: ", employeeArray);
-        process.exit();
         break;
-    }
-
-    if (response.option !== "Finish Team") {
-      makeEmployee();
-    } else {
-      process.exit();
     }
   });
 }
 
-function makeEmployee() {
-  // Prompt to create Engineer or Intern Object
-  inquirer.prompt(listQueestion).then((response) => {
-    switch (response.option) {
-      case "Engineer":
-        const newEngineer = new Engineer(
-          response.name,
-          "Engineer",
-          response.id,
-          response.email,
-          response.github
-        );
-        employeeArray.push(newEngineer);
-        break;
+// INITIALIZATION ======================
+init();
 
-      case "Intern":
-        const newIntern = new Intern(
-          response.name,
-          "Intern",
-          response.id,
-          response.email,
-          response.school
-        );
-        employeeArray.push(newIntern);
-        break;
-      default:
-        console.log("The contents of the employee Array: ", employeeArray);
-        process.exit();
-        break;
-    }
-    if (response.option !== "Finish Team") {
-      makeEmployee();
-    } else {
-      process.exit();
-    }
-  });
-}
 // Function to write file
 // function writeToFile(fileName, data) {
 //   fs.appendFile(fileName, data, (err) =>
@@ -183,14 +170,15 @@ function makeEmployee() {
 // appendn the template to the html
 
 // for (var i =0; i < allEMployee.length; i++){
-//     const newTemplat = template(allEMployee[i]);
+//     const newTemplat = templateGenerator(allEMployee[i]);
 //     writeToFile(dsfsdf, newTemplate);
 // }
-// function template(data) {
-//     return `<p>dfsdfsdfsf</p>`
+
+// function templateGenerator(data) {
+//     return `<p>card template</p>`
 // }
 // ==================================================
-// listQueestion
+// listQuestion
 
 // switch statemetn
 // listQuestion = ...
@@ -205,6 +193,3 @@ function makeEmployee() {
 //     // writeToFile("dist/index.html", generateHTML(response));
 //   });
 // }
-
-// USER INTERACTIONS ======================
-init();

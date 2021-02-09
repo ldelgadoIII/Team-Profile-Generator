@@ -30,7 +30,7 @@ const initialQs = [
   {
     type: "list",
     message: "Would you like to add another employee?",
-    name: "menu",
+    name: "option",
     choice: ["Engineer", "Intern", "Finish Team"],
   },
 ];
@@ -104,7 +104,8 @@ function writeToFile(fileName, data) {
 // Function to initialize app
 function init() {
   inquirer.prompt(initialQs).then((response) => {
-    writeToFile("ReadMe.md", generateHTML(response));
+    generateHTML(response);
+    // writeToFile("team.html", generateHTML(response));
   });
 }
 // USER INTERACTIONS ======================

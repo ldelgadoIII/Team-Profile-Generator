@@ -7,6 +7,9 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 // STARTING DATA ==========================
+let listQueestion;
+const employeeArray = [];
+
 // Questions to ask user
 const initialQs = [
   {
@@ -95,9 +98,80 @@ const internQs = [
   },
 ];
 
-const employeeArray = [];
-
 // FUNCTIONS ==============================
+// First function to run when app begins
+function init() {
+  inquirer.prompt(initialQs).then((response) => {
+    const newManager = new Manager(
+      response.name,
+      "Manager",
+      response.id,
+      response.email,
+      response.office
+    );
+
+    employeeArray.push(newManager);
+
+    switch (response.option) {
+      case "Engineer":
+        listQueestion = engineerQs;
+        // console.log("List Question: ", listQueestion);
+        break;
+      case "Intern":
+        listQueestion = internQs;
+        // console.log("List Question: ", listQueestion);
+        break;
+      default:
+        console.log("The contents of the employee Array: ", employeeArray);
+        process.exit();
+        break;
+    }
+
+    if (response.option !== "Finish Team") {
+      makeEmployee();
+    } else {
+      process.exit();
+    }
+  });
+}
+
+function makeEmployee() {
+  // Prompt to create Engineer or Intern Object
+  inquirer.prompt(listQueestion).then((response) => {
+    switch (response.option) {
+      case "Engineer":
+        const newEngineer = new Engineer(
+          response.name,
+          "Engineer",
+          response.id,
+          response.email,
+          response.github
+        );
+        employeeArray.push(newEngineer);
+        break;
+
+      case "Intern":
+        const newIntern = new Intern(
+          response.name,
+          "Intern",
+          response.id,
+          response.email,
+          response.school
+        );
+        employeeArray.push(newIntern);
+        break;
+      default:
+        console.log("The contents of the employee Array: ", employeeArray);
+        process.exit();
+        break;
+    }
+    if (response.option !== "Finish Team") {
+      makeEmployee();
+    } else {
+      process.exit();
+    }
+  });
+}
 // Function to write file
 // function writeToFile(fileName, data) {
 //   fs.appendFile(fileName, data, (err) =>
@@ -115,48 +189,7 @@ const employeeArray = [];
 // function template(data) {
 //     return `<p>dfsdfsdfsf</p>`
 // }
-
-// Function to initialize app
-function init() {
-  let listQueestion;
-
-  inquirer.prompt(initialQs).then((response) => {
-    const newManager = new Manager(
-      response.name,
-      "Manager",
-      response.id,
-      response.email,
-      response.office
-    );
-
-    employeeArray.push(newManager);
-    console.log("The contents of the employee Array: ", employeeArray);
-    switch (response.option) {
-      case "Engineer":
-        listQueestion = engineerQs;
-        console.log("List Question: ", listQueestion);
-        break;
-      case "Intern":
-        listQueestion = internQs;
-        console.log("List Question: ", listQueestion);
-        break;
-      default:
-        process.exit();
-        break;
-    }
-
-    // employeeObject
-    // inquirer.prompt(listQueestion).then((response) => {
-    //     switch (response.option){
-    //         case "Engineer":
-    //             employeeObject = new Engineer(....)
-    //             array.push(employeeObject.template)
-    //             break;
-    //     }
-    // });
-  });
-}
-
+// ==================================================
 // listQueestion
 
 // switch statemetn

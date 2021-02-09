@@ -1,6 +1,7 @@
 // DEPENDENCIES ==============================
 const fs = require("fs");
 const inquirer = require("inquirer");
+const generateHTML = require("./generateHTML");
 
 // STARTING DATA ==========================
 // Questions to ask user
@@ -43,20 +44,6 @@ const employeeQs = [
   },
 ];
 
-// Employee class
-class Employee {
-  constructor(name, id, email) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-  }
-
-  printInfo() {
-    console.log(`Name: ${this.name}`);
-    console.log(`ID: ${this.id}`);
-    console.log(`Email: ${this.email}`);
-  }
-}
 // FUNCTIONS ==============================
 // Function to write file
 function writeToFile(fileName, data) {
@@ -67,8 +54,8 @@ function writeToFile(fileName, data) {
 
 // Function to initialize app
 function init() {
-  inquirer.prompt(questions).then((response) => {
-    writeToFile("ReadMe.md", response);
+  inquirer.prompt(generalQs).then((response) => {
+    writeToFile("ReadMe.md", generateHTML(response));
   });
 }
 // USER INTERACTIONS ======================

@@ -2,7 +2,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateHTML = require("./generateHTML");
-const Employee = require("./lib/employee");
+const Employee = require("./lib/Employee");
 
 // STARTING DATA ==========================
 // Questions to ask user
@@ -31,7 +31,7 @@ const initialQs = [
     type: "list",
     message: "Would you like to add another employee?",
     name: "option",
-    choice: ["Engineer", "Intern", "Finish Team"],
+    choices: ["Engineer", "Intern", "Finish Team"],
   },
 ];
 
@@ -60,7 +60,7 @@ const engineerQs = [
     type: "list",
     message: "Would you like to add another employee?",
     name: "menu",
-    choice: ["Engineer", "Intern", "Finish Team"],
+    choices: ["Engineer", "Intern", "Finish Team"],
   },
 ];
 
@@ -89,7 +89,7 @@ const internQs = [
     type: "list",
     message: "Would you like to add another employee?",
     name: "menu",
-    choice: ["Engineer", "Intern", "Finish Team"],
+    choices: ["Engineer", "Intern", "Finish Team"],
   },
 ];
 
@@ -109,3 +109,4 @@ function init() {
   });
 }
 // USER INTERACTIONS ======================
+init();

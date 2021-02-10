@@ -100,7 +100,6 @@ function init() {
     );
 
     employeeArray.push(newManager.getTemplate());
-    console.log(employeeArray);
 
     // Prompt to add employee
     addEmployee();
@@ -121,8 +120,6 @@ function addEmployee() {
           );
 
           employeeArray.push(newEngineer.getTemplate());
-
-          console.log(employeeArray);
         });
         // Prompt question again
         addEmployee();
@@ -139,8 +136,6 @@ function addEmployee() {
           );
 
           employeeArray.push(newIntern.getTemplate());
-
-          console.log(employeeArray);
         });
 
         // Prompt question again
@@ -166,38 +161,3 @@ const generateCards = () => {
 
 // INITIALIZATION ======================
 init();
-
-// Function to write file
-// function writeToFile(fileName, data) {
-//   fs.appendFile(fileName, data, (err) =>
-//     err ? console.error(err) : console.log("HTML Created!")
-//   );
-
-// loop through allEmployes in the array
-//create the template
-// appendn the template to the html
-
-// for (var i =0; i < allEMployee.length; i++){
-//     const newTemplat = templateGenerator(allEMployee[i]);
-//     writeToFile(dsfsdf, newTemplate);
-// }
-
-// function templateGenerator(data) {
-//     return `<p>card template</p>`
-// }
-// ==================================================
-// listQuestion
-
-// switch statemetn
-// listQuestion = ...
-
-// secodn inquirer
-// new ... ()
-
-// }
-
-// const newIntern = new Intern(res.sdasd, res,.asdqad)
-//     generateHTML(response);
-//     // writeToFile("dist/index.html", generateHTML(response));
-//   });
-// }

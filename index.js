@@ -1,7 +1,6 @@
 // DEPENDENCIES ==============================
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateHTML = require("./generateHTML");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -122,7 +121,7 @@ function addEmployee() {
             response.github
           );
 
-          employeeArray.push(newEngineer);
+          employeeArray.push(newEngineer.getTemplate());
 
           console.log(employeeArray);
         });
@@ -141,7 +140,7 @@ function addEmployee() {
             response.school
           );
 
-          employeeArray.push(newIntern);
+          employeeArray.push(newIntern.getTemplate());
 
           console.log(employeeArray);
         });
@@ -150,10 +149,24 @@ function addEmployee() {
         addEmployee();
         break;
       default:
+        generateCards();
         break;
     }
   });
 }
+
+// Insert objects into html template
+const generateCards = () => {
+  let htmlTemplate = fs.readFileSync("./src/index.html", "utf-8");
+
+  htmlTemplate = htmlTemplate.replace("{{replace}}", employeeArray.join(""));
+
+  console.log(htmlTemplate);
+
+  fs.writeToFile("html.index", htmlTemplate, (err) => {
+    err ? console.error(err) : console.log("HTML Created!");
+  });
+};
 
 // INITIALIZATION ======================
 init();

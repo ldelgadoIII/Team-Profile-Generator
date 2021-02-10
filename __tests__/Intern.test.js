@@ -1,15 +1,35 @@
-const Employee = require("../lib/Employee");
+const Intern = require("../lib/Intern");
 
 describe("Intern", () => {
   describe("Initialize", () => {
     //should have a school property
     it("should have a school property", () => {
-      const intern = new Intern("");
+      const intern = new Intern(
+        "Loreto",
+        3,
+        "ldeladothethird@gmail.com",
+        "Columbia University"
+      );
 
-      expect("name" in employee).toEqual(true);
-      expect("role" in employee).toEqual(true);
-      expect("id" in employee).toEqual(true);
-      expect("email" in employee).toEqual(true);
+      expect("school" in intern).toEqual(true);
+    });
+    it("should return a school when .getSchool() is called", () => {
+      const intern = new Intern(
+        "Loreto",
+        3,
+        "ldeladothethird@gmail.com",
+        "Columbia University"
+      );
+      expect(intern.getSchool()).toEqual("Columbia University");
+    });
+    it('should return "Intern" when .getRole() is called', () => {
+      const intern = new Intern(
+        "Loreto",
+        3,
+        "ldeladothethird@gmail.com",
+        "Columbia University"
+      );
+      expect(intern.getRole()).toEqual("Intern");
     });
   });
 });

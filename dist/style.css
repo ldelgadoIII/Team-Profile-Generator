@@ -1,3 +1,16 @@
+#title {
+  color: white;
+  background: rgb(197, 88, 88);
+  margin-bottom: 20px;
+  padding: 40px;
+}
+
+#cardHead {
+  box-shadow: 6px 8px 13px -1px black;
+}
+
 #card {
   color: black !important;
+  background: rgb(194, 191, 191);
+  box-shadow: 6px 4px 12px -1px black;
 }

@@ -115,7 +115,6 @@ function addEmployee() {
         await inquirer.prompt(engineerQs).then(async (response) => {
           const newEngineer = new Engineer(
             response.name,
-            "Engineer",
             response.id,
             response.email,
             response.github
@@ -134,7 +133,6 @@ function addEmployee() {
         await inquirer.prompt(internQs).then(async (response) => {
           const newIntern = new Intern(
             response.name,
-            "Intern",
             response.id,
             response.email,
             response.school

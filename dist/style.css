@@ -5,12 +5,16 @@
   padding: 40px;
 }
 
+#card {
+  max-width: 18rem;
+  margin-bottom: 40px;
+}
+
 #cardHead {
   box-shadow: 6px 8px 13px -1px black;
 }
 
-#card {
-  color: black !important;
-  background: rgb(194, 191, 191);
+#cardBody {
+  background: rgb(247 247 247);
   box-shadow: 6px 4px 12px -1px black;
 }

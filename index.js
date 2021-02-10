@@ -161,9 +161,7 @@ const generateCards = () => {
 
   htmlTemplate = htmlTemplate.replace("{{replace}}", employeeArray.join(""));
 
-  console.log(htmlTemplate);
-
-  fs.writeToFile("html.index", htmlTemplate, (err) => {
+  fs.writeFile("index.html", htmlTemplate, (err) => {
     err ? console.error(err) : console.log("HTML Created!");
   });
 };

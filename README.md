@@ -21,6 +21,8 @@ The user must have node installed. The user should also install inquirer.
 
 ## Usage
 
+![Webpage Preview](Assets/team-builder.PNG)
+
 ![README Gif](Assets/team-builder-app.gif)
 
 ## License
